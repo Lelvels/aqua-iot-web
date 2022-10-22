@@ -52,14 +52,14 @@ class SensorDataController extends Controller
     {
         $deviceId = $request->input("deviceId");
         $device = Device::findOrFail($deviceId);
-        if($device != null){
+        if($device != null || !empty($device) ){
             $sensorData = SensorData::create([
                 'device_id' => $deviceId,
                 'data' => $request->input("data")
             ]);
             return new SensorDataResource($sensorData);
-        } 
-        return Response("No such device id", 404);
+        }
+        return Response("Bad Request! No such device id", 400);
     }
 
     /**

@@ -27,8 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //api/v1/
 Route::group(['prefix' => 'v1'], function ()
 {
-    Route::apiResource('devices', DeviceController::class)->name('index', 'devices');
-    Route::apiResource('sensordatas', SensorDataController::class)->name('index', 'sensordatas');
+    Route::apiResource('devices', DeviceController::class)->name('index', 'api_devices');
+    Route::apiResource('sensordatas', SensorDataController::class)->name('index', 'api_sensordatas');
 });
 
 

@@ -18,6 +18,7 @@ class DeviceResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'userId' => $this->user_id,
             'connectionString' => $this->connectionString,
             'sensorDatas' => new SensorDataCollection($this->whenLoaded('sensorDatas'))
         ];

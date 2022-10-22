@@ -12,9 +12,13 @@ class Device extends Model
     protected $fillable = [
         'name',
         'description',
-        'connection_string'
+        'connection_string',
+        'user_id'
     ];
     public function sensorDatas(){
         return $this->hasMany(SensorData::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

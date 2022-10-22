@@ -10,6 +10,7 @@ use App\Filters\V1\DeviceFilter;
 use App\Http\Resources\V1\DeviceCollection;
 use App\Http\Resources\V1\DeviceResource;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class DeviceController extends Controller
 {
@@ -48,7 +49,18 @@ class DeviceController extends Controller
      */
     public function store(StoreDeviceRequest $request)
     {
-        return new DeviceResource(Device::create($request->all()));
+        $userId = $request->input("userId");
+        $user = User::findOrFail($userId);
+        if($user != null || !empty($user)){
+            $device = Device::create([
+                "user_id" => $userId,
+                "name" => $request->input("name"),
+                "description" => $request->input("description"),
+                "connection_string" => $request->input("connectionString")
+            ]);
+            return new DeviceResource($device);
+        }
+        return Response("Bad Request! No such user id", 400);
     }
 
     /**

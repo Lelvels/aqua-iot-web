@@ -9,9 +9,11 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jenssegers/mongodb": "*",
+        "laravel/breeze": "v1.0.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "3.1",
         "offline-agency/laravel-mongo-auto-sync": "^2.0"
     },
     "require-dev": {

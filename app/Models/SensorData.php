@@ -10,7 +10,8 @@ class SensorData extends Model
     use HasFactory;
     protected $connection = 'mongodb';
     protected $fillable = [
-        'data'
+        'data',
+        'device_id'
     ];
     public function device(){
         return $this->belongsTo(Device::class);
