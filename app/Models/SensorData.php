@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class SensorData extends Model
 {
     use HasFactory;
-    protected $connection = 'mongodb';
+    protected $connection = 'mysql';
     protected $fillable = [
         'data',
         'device_id'

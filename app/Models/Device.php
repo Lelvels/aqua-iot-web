@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Device extends Model
 {
     use HasFactory;
-    protected $connection = 'mongodb';
+    protected $connection = 'mysql';
     protected $fillable = [
         'name',
         'description',

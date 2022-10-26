@@ -16,8 +16,8 @@ class SensorDataResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'deviceId' => $this->device_id,
-            'data' => $this->data
+            'data' => $this->data,
+            'createdAt' => $this->created_at
         ];
     }
 }

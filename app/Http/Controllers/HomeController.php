@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index(){
-        //dd(Auth::check());
-        //dd(Auth::id());
-        //dd(Auth::user());
-        return view('home');
+    public function home(){
+        return view('home.index');
     }
     public function about(){
-        return view('about');
+        return view('home.about');
     }
 }

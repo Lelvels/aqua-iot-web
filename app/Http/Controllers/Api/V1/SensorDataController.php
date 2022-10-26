@@ -57,7 +57,7 @@ class SensorDataController extends Controller
                 'device_id' => $deviceId,
                 'data' => $request->input("data")
             ]);
-            return new SensorDataResource($sensorData);
+            return Response("DataOK", 200);
         }
         return Response("Bad Request! No such device id", 400);
     }
@@ -68,10 +68,17 @@ class SensorDataController extends Controller
      * @param  \App\Models\SensorData  $sensorData
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $sensorData = SensorData::findOrFail($id);
-        return new SensorDataResource($sensorData);
+        $latest = $request->query('latest');
+        $data_list = '';
+        if($latest){
+            $data_list = SensorData::where('device_id', $id)->orderBy('created_at', 'DESC')->get(['id', 'data', 'created_at'])->first();
+            return new SensorDataResource($data_list);
+        } else {
+            $data_list = SensorData::where('device_id', $id)->get(['id', 'data', 'created_at']);
+            return new SensorDataCollection($data_list);
+        }
     }
 
     /**
@@ -105,12 +112,14 @@ class SensorDataController extends Controller
      */
     public function destroy($id)
     {
-        $sensorData = SensorData::findOrFail($id);
-        if($sensorData != null){
-            $sensorData->delete();
-            return new Response("Delete!", 200);
+        $data_list = SensorData::where('device_id', $id)->get(['id', 'data', 'created_at']);
+        if($data_list != null){
+            $data_list->delete();
+            return new Response("DeleteOK", 200);
         } else {
-            return new Response("Cannot find data", 404);
+            return new Response("Cannot find data from device!", 404);
         }
     }
+
+    
 }

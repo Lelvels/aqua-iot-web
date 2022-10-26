@@ -9,10 +9,13 @@ class DeviceFilter extends ApiFilter
 {
     protected $safeParams = [
         'id' => ['eq'],
-        'name' => ['eq', 'like', 'in']
+        'name' => ['eq', 'like', 'in'],
+        'userId' => ['eq']
     ];
 
-    protected $columnMap = [];
+    protected $columnMap = [
+        "userId" => "user_id"
+    ];
 
     protected $operatorMap = [
         'eq' => '=',

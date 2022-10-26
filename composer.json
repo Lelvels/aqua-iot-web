@@ -9,6 +9,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jenssegers/mongodb": "*",
+        "laracasts/utilities": "^3.2",
         "laravel/breeze": "v1.0.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",

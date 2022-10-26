@@ -18,26 +18,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Home
-Route::get('/', [HomeController::class, "index"]
-)->name('home');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get("/about", [HomeController::class, "about"]
-)->name('about');
+Route::get('/', [HomeController::class, 'home'])->name('home.index');
+Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 
 //Device
-Route::get('/devices', [DeviceController::class, "index"])
-->middleware(['auth'])->name("devices");
+Route::resource('devices', DeviceController::class)->middleware(['auth']);
 
 //SensorData
-Route::get('/sensordatas', [SensorDataController::class, "index"])
-->middleware(['auth'])->name("sensordatas");
+Route::resource('sensordatas', SensorDataController::class)
+->only(['index', 'show', 'destroy'])->middleware(['auth']);
 
 //API documents
 Route::get('/apidoc', [ApiDocumentController::class, "index"])
-->middleware(['auth'])->name('apidoc');
+->middleware(['auth'])->name('apidoc.index');
 
 require __DIR__.'/auth.php';

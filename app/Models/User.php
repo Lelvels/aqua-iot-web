@@ -7,14 +7,14 @@ use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Eloquent implements Authenticatable
+class User extends Model implements Authenticatable
 {
     use AuthenticatableTrait;
     use HasApiTokens, HasFactory, Notifiable;
     
-    protected $connection = "mongodb";
+    protected $connection = "mysql";
 
     /**
      * The attributes that are mass assignable.

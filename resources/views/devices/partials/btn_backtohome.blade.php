@@ -1,0 +1,1 @@
+<a href="{{ route('devices.index') }}"><button type="button" class="btn btn-outline-secondary">Back to my devices</button></a></div>
